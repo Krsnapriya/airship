@@ -1,0 +1,19 @@
+name: Airship
+description: Step-based code debugging under real-world uncertainty, noise, and time pressure
+version: 1.0.0
+observation_space:
+  visible_files: list[str]
+  logs: str
+  test_results: str
+  time_remaining: int
+action_space:
+  type: str
+  target: str
+  content: str
+reward_range: [-1.0, 1.0]
+tasks:
+  - easy
+  - medium
+  - hard
+  - extreme
+grader: grade_trajectory

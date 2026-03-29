@@ -1,0 +1,2 @@
+Inconsistent outputs detected
+Same input produces different results

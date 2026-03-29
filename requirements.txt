@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pydantic
+openai
+httpx
+pyyaml
+streamlit
+requests
+numpy
+networkx
+huggingface_hub
+scipy
+matplotlib

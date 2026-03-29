@@ -1,0 +1,7 @@
+{
+  "bug_location": [
+    "utils.py"
+  ],
+  "bug_type": "logic_error",
+  "difficulty": "easy"
+}

@@ -1,0 +1,2 @@
+KeyError: 'points'
+Occurred in service layer

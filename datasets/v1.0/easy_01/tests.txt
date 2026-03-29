@@ -1,0 +1,3 @@
+test_checkout:
+input: 100
+expected: 90

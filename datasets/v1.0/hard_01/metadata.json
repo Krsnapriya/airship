@@ -1,0 +1,7 @@
+{
+  "bug_location": [
+    "service.py"
+  ],
+  "bug_type": "key_error",
+  "difficulty": "hard"
+}

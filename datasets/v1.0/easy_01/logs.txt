@@ -1,0 +1,4 @@
+Running checkout...
+Expected output: 90
+Actual output: 0
+AssertionError: Discount calculation incorrect
