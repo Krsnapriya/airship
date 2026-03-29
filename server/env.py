@@ -290,7 +290,10 @@ class AirshipEnv:
         state.steps_taken += 1
         self.trajectory.append(action)
 
-
+        # === META-CONTROLLER HOOK ===
+        if self.meta_controller:
+            self.meta_controller.maybe_escalate()
+        # =================================
 
         # 1. Action Layer
         if action.type == "open_file":
