@@ -1,19 +1,37 @@
 name: Airship
 description: Step-based code debugging under real-world uncertainty, noise, and time pressure
 version: 1.0.0
+
 observation_space:
   visible_files: list[str]
   logs: str
   test_results: str
   time_remaining: int
+
 action_space:
   type: str
   target: str
   content: str
+
 reward_range: [-1.0, 1.0]
+
+entrypoints:
+  reset: /reset
+  step: /step
+  state: /state
+  grader: /grader
+  baseline: /baseline
+
 tasks:
-  - easy
-  - medium
-  - hard
-  - extreme
-grader: grade_trajectory
+  - id: easy
+    description: Fix a single-file bug with clear logs
+  - id: medium
+    description: Fix a multi-file bug with ambiguous, misleading logs
+  - id: hard
+    description: Fix distributed service bug under time pressure
+  - id: extreme
+    description: Resolve state corruption with non-deterministic behavior
+
+grader:
+  endpoint: /grader
+  metric: score

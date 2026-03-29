@@ -11,9 +11,17 @@ from models import Action, Score, Observation  # pyre-ignore
 from server.env import AirshipEnv  # pyre-ignore
 
 # Standardized configuration
-API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
-MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
-API_KEY = os.getenv("HF_TOKEN") or os.getenv("OPENAI_API_KEY")
+HF_TOKEN = os.getenv("HF_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# If on Hugging Facehub or utilizing HF_TOKEN, use HF's OpenAI-compatible endpoint as default
+DEFAULT_BASE_URL = "https://api-inference.huggingface.co/v1" if HF_TOKEN and not OPENAI_API_KEY else "https://api.openai.com/v1"
+API_BASE_URL = os.getenv("API_BASE_URL", DEFAULT_BASE_URL)
+
+# Default to Llama-3 to align with Meta+HF hackathon context
+MODEL_NAME = os.getenv("MODEL_NAME", "meta-llama/Meta-Llama-3-8B-Instruct")
+
+API_KEY = HF_TOKEN or OPENAI_API_KEY
 
 if not API_KEY:
     print("Error: HF_TOKEN or OPENAI_API_KEY environment variable is required.")
