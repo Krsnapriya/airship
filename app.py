@@ -1,5 +1,6 @@
 import streamlit as st  # pyre-ignore
 import numpy as np
+print("🔥 AIRSHIP STARTED SUCCESSFULLY")
 import time
 import random
 from models import Action  # pyre-ignore
