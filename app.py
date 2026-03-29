@@ -49,6 +49,31 @@ with tab1:
 
 # ── 2. Sidebar & Global State ──
 with st.sidebar:
+    st.header("Status Dashboard")
+    
+    # Check for API Keys
+    hf_token = os.getenv("HF_TOKEN")
+    openai_key = os.getenv("OPENAI_API_KEY")
+    
+    if hf_token:
+        st.success("✅ HF_TOKEN detected")
+    elif openai_key:
+        st.success("✅ OPENAI_API_KEY detected")
+    else:
+        st.warning("⚠️ No API Key found")
+
+    # Check for Backend Server (FastAPI)
+    import requests
+    try:
+        resp = requests.get("http://localhost:8000/health", timeout=1)
+        if resp.status_code == 200:
+            st.success("✅ Airship API: Online")
+        else:
+            st.error(f"❌ Airship API: {resp.status_code}")
+    except Exception:
+        st.error("❌ Airship API: Unreachable")
+
+    st.divider()
     st.header("Configuration")
     diff_sel = st.selectbox("Difficulty", ["easy", "medium", "hard", "extreme"], index=2)
     split_sel = st.selectbox("Split", ["train", "test", "ood"], index=1)
