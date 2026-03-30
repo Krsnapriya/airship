@@ -121,3 +121,8 @@ def baseline():
 @app.get("/health")
 def health():
     return {"status": "ok", "environment": "Airship", "version": "1.0.0"}
+
+
+@app.get("/")
+def root():
+    return {"message": "Airship API is running. Submit POST requests to /reset and /step."}
